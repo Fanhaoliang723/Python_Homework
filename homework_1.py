@@ -3,7 +3,7 @@ from PIL import Image,ImageDraw,ImageFont
 font_name = 'arial.ttf'
 image_path = "F:\\Fhl\\PythonStudy\\PyProgram\\src\\image.jpg"
 
-def change_image( font_name, image_path):
+def change_image():
 
     text_font = ImageFont.truetype(font_name,55)
     image = Image.open(image_path)
@@ -11,5 +11,6 @@ def change_image( font_name, image_path):
     draw.text((350,3), "4", fill = (255,0,0), font=text_font)
     return image
 
-image_new = change_image(font_name,image_path)
+image_new = change_image()
 image_new.show()
+image_new.save("F:\\Fhl\\PythonStudy\\PyProgram\\src\\image_new.jpg")

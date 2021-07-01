@@ -5,13 +5,13 @@ code_src = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 code_num = 200
 code_len = 10
 
-def get_code(num, code_len):
+def get_code():
     code_list = []
-    for i in range(num):
+    for i in range(code_num):
         code = random.sample(code_src,code_len)
         code_str = "".join(code)
         code_list.append(code_str)
     return code_list
 
-code_tlist = get_code(code_num,code_len)
+code_tlist = get_code()
 print(code_tlist)
