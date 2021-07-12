@@ -1,31 +1,33 @@
 import src.conf as conf
-
-class Joseph_iter:
+#利用迭代器，for遍历实现约瑟夫环
+class JosephIter:
     
-    def __init__(self,people_lst):
-        self.lst = people_lst
-        self.people_num = len(self.lst)
-        self.start_id = conf.START_NUM
-        self.step = conf.STEP_NUM - 1
-        self.result_lst = []
+    def __init__(self,person_lst):
+        self._lst = person_lst
+        self._person_lens = len(self._lst)
+        self._start_pos = conf.START_NUM - 1
+        self._step = conf.STEP_NUM - 1
+        self._result_lst = []
+
     def __iter__(self):
         return self
-    def pop_lst(self,id):
-        self.lst.pop(id)
-    def next(self):
-        if len(self.lst) > 0:
-            self.out_id = (self.start_id + self.step) % len(self.lst)
-            self.result_lst.append(self.lst[self.out_id])
-            ''' self.lst[self.out_id].display_people()'''
-            self.pop_lst(self.out_id)
-            self.start_id = self.out_id
+    def pop_lst(self,pos):
+        self._lst.pop(pos)
+
+    def __next__(self):
+        if len(self._lst) > 0:
+            self._out_pos = (self._start_pos + self._step) % len(self._lst)
+            self._result_lst.append(self._lst[self._out_pos])
+            self.pop_lst(self._out_pos)
+            self._start_pos = self._out_pos
         else:
             raise StopIteration
-    def out_put(self):
-        return self.result_lst
-    def run_joseph_ring(self):
-        for i in range(self.people_num):
-            self.next()
-        for people_obj in self.result_lst:
-            people_obj.display_people()
-        self.out_put()
+        
+    def run_and_show_joseph_ring_result(self):
+        for i in range(self._person_lens):
+            self.__next__()
+
+        for person_obj in self._result_lst:
+            person_obj.show_person_as_format()
+            
+        return self._result_lst

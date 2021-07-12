@@ -1,20 +1,21 @@
 import src.conf as conf
 from src.conf import Moudle
+#旧版本约瑟夫环，未做改动，无需查阅
 def calc_and_show_joseph_ring(lst):
     reset_step = conf.STEP_NUM - 1  
-    people_pos = conf.START_NUM
+    person_pos = conf.START_NUM - 1
     display_joseph_ring(0,0,0,Moudle.START)
 
     while len(lst) > 0:
-        people_pos = people_pos + reset_step
+        person_pos = person_pos + reset_step
         result_lst = []
         
-        if people_pos >= len(lst):
-            people_pos = people_pos % len(lst)
-        display_joseph_ring(lst[people_pos].name,lst[people_pos].id, 
-                            lst[people_pos].gender, Moudle.SELECT)
-        result_lst.append(lst[people_pos])
-        lst.pop(people_pos)
+        if person_pos >= len(lst):
+            person_pos = person_pos % len(lst)
+        display_joseph_ring(lst[person_pos].name,lst[person_pos].id, 
+                            lst[person_pos].gender, Moudle.SELECT)
+        result_lst.append(lst[person_pos])
+        lst.pop(person_pos)
     display_joseph_ring(lst[0].name, lst[0].id, lst[0].gender, Moudle.LAST)
     result_lst.append(lst[0])
     
