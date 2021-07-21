@@ -16,7 +16,6 @@ class JosephIter:
             self._out_pos = (self._start_pos + self._step) % len(self._lst)
             self._out_person = self._lst[self._out_pos]
             self._lst.pop(self._out_pos)
-            self._start_pos = self._out_pos
 
             return self._out_person
         else:
