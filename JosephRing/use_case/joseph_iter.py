@@ -1,4 +1,4 @@
-import src.conf as conf
+import ..conf as conf
 #利用迭代器（类），for遍历实现约瑟夫环
 class JosephIter:
     
